@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 6fr;
+}
+
+header {
+  background-color: rgb(184, 220, 252);
+  grid-column: 1 / -1;
+}
+
+.content {
+  background-color: rgb(227, 227, 227);
+  grid-column: 2;
+}
+
+.card-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  padding: 2rem;
+  background-color: rgb(155, 155, 240);
+}
