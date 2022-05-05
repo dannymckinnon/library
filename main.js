@@ -16,10 +16,37 @@ function displayBook(library) {
   for (const book of library) {
     const card = document.createElement('div');
     card.classList.add('card');
-    const title = document.createTextNode(book.title);
-    card.appendChild(title);
+
+    const title = document.createElement('span');
+    title.classList.add('title');
+    title.textContent = `Title: ${book.title}`;
+
+    const author = document.createElement('span');
+    author.classList.add('author');
+    author.textContent = `Author: ${book.author}`;
+
+    const pages = document.createElement('span');
+    pages.classList.add('pages');
+    pages.textContent = `Pages: ${book.pages}`;
+
+    const read = document.createElement('span');
+    read.classList.add('read');
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.setAttribute('type', 'checkbox');
+    label.append(input);
+    const text = document.createTextNode('Read');
+    label.appendChild(text);
+    read.append(label);
+
+    const remove = document.createElement('button');
+    remove.classList.add('remove');
+    remove.textContent = 'Remove';
+
+    card.append(title, author, pages, read, remove);
+
     const cardGroup = document.querySelector('.card-group');
-    cardGroup.appendChild(card);
+    cardGroup.append(card);
   }
 }
 
