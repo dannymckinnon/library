@@ -54,3 +54,23 @@ addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
 addBookToLibrary('LOTR', 'J.R.R. Tolkein', '456', false);
 displayBook(myLibrary);
 console.log(myLibrary);
+
+
+// display modal when Add book button is clicked
+const modal = document.getElementById('myModal');
+const btn = document.getElementById('myBtn');
+const close = document.getElementsByClassName('close')[0];
+
+btn.onclick = function() {
+  modal.style.display = 'block';
+}
+
+close.onclick = function() {
+  modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
