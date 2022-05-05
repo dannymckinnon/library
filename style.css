@@ -30,6 +30,8 @@ body {
 header {
   background-color: var(--color3);
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .content {
@@ -39,7 +41,7 @@ header {
 
 .card-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 2rem;
 }
@@ -70,6 +72,40 @@ header {
 .remove {
   grid-column: 3;
 }
+
+.read > label {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.add-book {
+  align-self: end;
+  grid-column: 4;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  gap: 0.5rem;
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: #aabad100;
+  height: 50px;
+}
+
+.add-book > img {
+  width: 50px;
+  background-color: var(--color4);
+  border-radius: 2rem;
+}
+
+.add-book > img:hover {
+  background-color: var(--color4);
+
+}
+
+.add-book > img:active {
+  background-color: rgb(138, 142, 160);
+}
+
 
 
 

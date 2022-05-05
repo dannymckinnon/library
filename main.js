@@ -51,5 +51,6 @@ function displayBook(library) {
 }
 
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
+addBookToLibrary('LOTR', 'J.R.R. Tolkein', '456', false);
 displayBook(myLibrary);
 console.log(myLibrary);
