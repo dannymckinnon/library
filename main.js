@@ -13,6 +13,9 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBook(library) {
+  const cardGroup = document.querySelector('.card-group');
+  cardGroup.innerHTML = '';
+
   for (const book of library) {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -45,15 +48,10 @@ function displayBook(library) {
 
     card.append(title, author, pages, read, remove);
 
-    const cardGroup = document.querySelector('.card-group');
     cardGroup.append(card);
   }
 }
 
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
-addBookToLibrary('LOTR', 'J.R.R. Tolkein', '456', false);
-displayBook(myLibrary);
-console.log(myLibrary);
 
 
 // display modal when Add book button is clicked
@@ -74,3 +72,25 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
+// collect book data when submit button pressed and add to library
+let submit = document.querySelector('.submit');
+
+submit.addEventListener('click', () => {
+  let title = document.querySelector('#title');
+  let author = document.querySelector('#author');
+  let pages = document.querySelector('#pages');
+  let read = document.querySelector('#read');
+
+  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  displayBook(myLibrary);
+  modal.style.display = 'none';
+});
+
+
+
+// addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
+// addBookToLibrary('LOTR', 'J.R.R. Tolkein', '456', false);
+// displayBook(myLibrary);
+console.log(myLibrary);
