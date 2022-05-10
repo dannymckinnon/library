@@ -107,8 +107,6 @@ header {
 }
 
 
-
-
 .modal {
   display: none;
   position: fixed;
@@ -122,13 +120,45 @@ header {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   border: 1px solid gray;
   background-color: var(--color4);
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
-  width: 50%;
+  width: 325px;
   border-radius: 1rem;
+  
 }
 
+.book-form {
+  align-self: center;
+  padding-bottom: 2rem;
+}
 
+.book-form > fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.close img {
+  height: 30px;
+}
+
+fieldset div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.read {
+  align-self: center;
+}
+
+.submit {
+  padding: 0.3rem 1.4rem;
+}
 
