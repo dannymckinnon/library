@@ -86,6 +86,10 @@ submit.addEventListener('click', () => {
   addBookToLibrary(title.value, author.value, pages.value, read.value);
   displayBook(myLibrary);
   modal.style.display = 'none';
+
+  title.value = '';
+  author.value = '';
+  pages.value = '';
 });
 
 
