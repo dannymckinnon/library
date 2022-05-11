@@ -10,6 +10,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
+  console.log(myLibrary);
 }
 
 function displayBook(library) {
@@ -47,22 +48,17 @@ function displayBook(library) {
     remove.classList.add('remove');
     remove.textContent = 'Remove';
 
-    card.append(title, author, pages, read, remove);
-
-    cardGroup.append(card);
-    let removeBtn = document.querySelectorAll('.remove');
-
     // remove book on button press
-    for (let i = 0; i < removeBtn.length; i++) {
-      removeBtn[i].addEventListener('click', () => {
-        let index = +(removeBtn[i].parentElement.getAttribute('data-index'));
-        console.log(index);
-        myLibrary.splice(index, 1);
-        displayBook(myLibrary);
-    })}
+    remove.addEventListener('click', () => {
+      myLibrary.splice(i, 1);
+      displayBook(myLibrary);
+    })
+
+    card.append(title, author, pages, read, remove);
+    
+    cardGroup.append(card);
   }
 }
-
 
 
 // display modal when Add book button is clicked
