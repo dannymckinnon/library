@@ -7,6 +7,13 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// prototype function for book read/unread checkbox
+Book.prototype.toggleRead = function() {
+  this.read ? this.read = false : this.read = true;
+  console.log(this.read);
+};
+
+
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
@@ -43,6 +50,10 @@ function displayBook(library) {
     const text = document.createTextNode('Read');
     label.appendChild(text);
     read.append(label);
+    input.checked = library[i].read;
+
+    // change read property in object on click of read button
+    input.addEventListener('click', library[i].toggleRead);
 
     const remove = document.createElement('button');
     remove.classList.add('remove');
@@ -90,17 +101,13 @@ submit.addEventListener('click', () => {
   let pages = document.querySelector('#pages');
   let read = document.querySelector('#read');
 
-  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  addBookToLibrary(title.value, author.value, pages.value, read.checked);
   displayBook(myLibrary);
   modal.style.display = 'none';
 
   title.value = '';
   author.value = '';
   pages.value = '';
+  read.checked = false;
 });
 
-
-// addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
-// addBookToLibrary('LOTR', 'J.R.R. Tolkein', '456', false);
-// displayBook(myLibrary);
-console.log(myLibrary);
