@@ -16,21 +16,22 @@ function displayBook(library) {
   const cardGroup = document.querySelector('.card-group');
   cardGroup.innerHTML = '';
 
-  for (const book of library) {
+  for (let i = 0; i < library.length; i++) {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.setAttribute('data-index', i);
 
     const title = document.createElement('span');
     title.classList.add('title');
-    title.textContent = `Title: ${book.title}`;
+    title.textContent = `Title: ${library[i].title}`;
 
     const author = document.createElement('span');
     author.classList.add('author');
-    author.textContent = `Author: ${book.author}`;
+    author.textContent = `Author: ${library[i].author}`;
 
     const pages = document.createElement('span');
     pages.classList.add('pages');
-    pages.textContent = `Pages: ${book.pages}`;
+    pages.textContent = `Pages: ${library[i].pages}`;
 
     const read = document.createElement('span');
     read.classList.add('read');
@@ -49,6 +50,16 @@ function displayBook(library) {
     card.append(title, author, pages, read, remove);
 
     cardGroup.append(card);
+    let removeBtn = document.querySelectorAll('.remove');
+
+    // remove book on button press
+    for (let i = 0; i < removeBtn.length; i++) {
+      removeBtn[i].addEventListener('click', () => {
+        let index = +(removeBtn[i].parentElement.getAttribute('data-index'));
+        console.log(index);
+        myLibrary.splice(index, 1);
+        displayBook(myLibrary);
+    })}
   }
 }
 
@@ -91,7 +102,6 @@ submit.addEventListener('click', () => {
   author.value = '';
   pages.value = '';
 });
-
 
 
 // addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '356', true);
