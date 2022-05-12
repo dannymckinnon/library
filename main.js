@@ -7,17 +7,14 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-// prototype function for book read/unread checkbox
 Book.prototype.toggleRead = function() {
-  this.read ? this.read = false : this.read = true;
-  console.log(this.read);
-};
-
+  this.read = !(this.read);
+  displayBook(myLibrary);
+}
 
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-  console.log(myLibrary);
 }
 
 function displayBook(library) {
@@ -46,15 +43,18 @@ function displayBook(library) {
     const label = document.createElement('label');
     const input = document.createElement('input');
     input.setAttribute('type', 'checkbox');
+
     label.append(input);
     const text = document.createTextNode('Read');
     label.appendChild(text);
     read.append(label);
     input.checked = library[i].read;
 
-    // change read property in object on click of read button
-    input.addEventListener('click', library[i].toggleRead);
-
+    // toggle read status on when checkbox clicked
+    input.addEventListener('click', () => {
+      myLibrary[i].toggleRead();
+    })
+  
     const remove = document.createElement('button');
     remove.classList.add('remove');
     remove.textContent = 'Remove';
